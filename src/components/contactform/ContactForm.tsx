@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Form, Input, Button,  } from 'antd';
 import axios from 'axios';
 import { notification } from 'antd';
+import { Redirect } from 'react-router-dom';
 interface Props {
     
 }
@@ -15,6 +16,7 @@ const layout = {
   
 export const ContactForm = (props: Props) => {
     const [contact, setcontact] = useState(String)
+    const isAuth = !!localStorage.getItem("token");
     const onFinish = (values: any) => {
         console.log('Success:', values);
         axios({
@@ -47,7 +49,9 @@ export const ContactForm = (props: Props) => {
       };
     
       return (
-        <Form
+        <div>
+        {isAuth ? (<div>
+          <Form
           {...layout}
           name="basic"
           initialValues={{ remember: true }}
@@ -75,6 +79,7 @@ export const ContactForm = (props: Props) => {
               Submit
             </Button>
           </Form.Item>
-        </Form>
+        </Form> </div>) : <Redirect to='/login' />}
+        </div>
       );
 }

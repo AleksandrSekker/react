@@ -4,7 +4,7 @@ import { FormForTodo } from './FormForTodo';
 
 import { Card, Row, Col, notification} from 'antd';
 import { DeleteOutlined} from '@ant-design/icons'
-import { Redirect } from 'react-router-dom';
+import { Redirect,} from 'react-router-dom';
 
 interface Props {
     
@@ -45,19 +45,20 @@ export const Todolist = (props: Props) => {
         {todo.map((todos: myState) => {
           return ( 
             <Row justify="space-around" key={todos.id} >
-              <Col span={8}>
+              <Col>
                 <Card 
                   key={todos.id}
                   hoverable
-                  style={{ marginBottom: '1rem', textAlign: 'center' }}
+                  style={{ marginBottom: '1rem', textAlign: 'center', padding: '2rem', width: '300px' }}
                   cover={
                   <h1>{todos.title}</h1>
 }
                   actions={[
+
                     <DeleteOutlined
                       key="delete"
                       onClick={() => deleteHandler(todos.id)}
-                    />,
+                    />
                   ]}
                 >
                 </Card>

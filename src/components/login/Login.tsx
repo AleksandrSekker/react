@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Form, Input, Button, Checkbox, notification, Row } from 'antd';
+import { Form, Input, Button,notification, Row } from 'antd';
 import axios from 'axios';
 import { NavLink, Redirect, useHistory } from 'react-router-dom';
 interface Props {
@@ -19,7 +19,10 @@ export const Login = (props: Props) => {
   const [user, setuser] = useState(String)
   const isAuth = !!localStorage.getItem("token");
   const history = useHistory()
-    const onFinish = (values:any) => {
+  interface MyState {
+    values: String,
+  }
+    const onFinish = (values: MyState) => {
         axios({
           method: 'post',
           url: 'http://127.0.0.1:8000/auth-token/token/login/',
@@ -32,18 +35,19 @@ export const Login = (props: Props) => {
             Accept: 'application/json',
           },
         })
-          .then(function (response:any) {
+          .then(function (response: any) {
             localStorage.setItem('token', response.data.auth_token)
             console.log(response.data.auth_token)
             console.log(response.status);
             if (response.status >= 200 && response.status < 300) {
-              history.push('/')
+              
               notification['success']({
                 message: 'You sussessfully login',
               });
+              history.push('/')
             }
           })
-          .catch(function (error:any) {
+          .catch(function (error:string) {
             notification['error']({
               message: 'You type wrong username or password'
             })
@@ -58,11 +62,11 @@ export const Login = (props: Props) => {
       
             },
           }).then(function (response) {
-            // handle success
+
             setuser(response.data.username)
           })
          .catch(function (error) {
-            // handle error
+
             console.log(error);
           })
       };

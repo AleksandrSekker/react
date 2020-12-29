@@ -24,11 +24,12 @@ export const FormForTodo = (props: Props) => {
     })
       .then(function (response) {
         console.log(response.status);
-        if (response.status === 200) {
+        if (response.status >= 200 && response.status < 300) {
           notification['success']({
             message: 'You sussessfully add card',
           });
         }
+
       })
       .catch(function (error) {
         console.log(error);

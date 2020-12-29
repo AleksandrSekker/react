@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Form, Input, Button, Checkbox, notification, Row } from 'antd';
+import { Form, Input, Button, notification, Row } from 'antd';
 import axios from 'axios';
 import { NavLink, useHistory } from 'react-router-dom';
 interface Props {

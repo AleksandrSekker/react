@@ -13,11 +13,11 @@ export const MenuComponent = (props: Props) => {
           Cards
           <Link to="/" />
         </Menu.Item>
-        {/* <Menu.Item key="2" icon={<DesktopOutlined />}>
-          Registration
-          <Link to="/registration" />
+        <Menu.Item key="2" icon={<DesktopOutlined />}>
+          Contact me
+          <Link to="/contact" />
         </Menu.Item>
-        <Menu.Item key="3" icon={<DesktopOutlined />}>
+        {/* <Menu.Item key="3" icon={<DesktopOutlined />}>
           Login
           <Link to="/login" />
         </Menu.Item> */}
